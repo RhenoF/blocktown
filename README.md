@@ -1,7 +1,7 @@
 # Blocktown
 
 Blocktown is meant to be a framework on which to build exercises aimed at
-teaching and training users in a range of mathematical and algorithmical skills.
+teaching and training users in a range of mathematical and algorithmic skills.
 
 ## Core Concepts
 
