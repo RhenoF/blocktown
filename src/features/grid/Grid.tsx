@@ -14,7 +14,7 @@ import {
   selectGridSize,
 } from "./gridSlice";
 import styles from "./Grid.module.css";
-import worker from "./assets/units/worker.png";
+// import worker from "assets/units/worker.png";
 
 const messages = defineMessages({
   welcome: {
@@ -27,6 +27,36 @@ export default function Grid() {
   const dispatch = useDispatch();
   const position = useSelector(selectPosition);
   const grid_size = useSelector(selectGridSize);
+
+  // const dot = (x: Number, y: Number) => {
+  //   return (
+  //     <div className={styles.workerUnit}>
+  //       {x === position.x && y === position.y && (
+  //         <img src={worker} className={styles.workerUnit} alt="worker"></img>
+  //       )}
+  //     </div>
+  //   );
+  // };
+
+  // const renderRows = () => {
+  //   let x = 0;
+  //   let y = 0;
+  //   let grid = [];
+
+  //   while (y < grid_size.y) {
+  //     let row = [];
+  //     while (x < grid_size.x) {
+  //       row.push(dot(x, y));
+  //       x += 1;
+  //     }
+  //     grid.push(row);
+  //     y = +1;
+  //   }
+
+  //   return grid;
+  // };
+
+  // const space = renderRows();
 
   return (
     <div>
@@ -62,10 +92,16 @@ export default function Grid() {
         </button>
       </div>
       <div className={styles.row}>
-        <button className={styles.button} onClick={() => dispatch(changeLocale("en"))}>
+        <button
+          className={styles.button}
+          onClick={() => dispatch(changeLocale("en"))}
+        >
           Change Locale to EN
         </button>
-        <button className={styles.button} onClick={() => dispatch(changeLocale("br"))}>
+        <button
+          className={styles.button}
+          onClick={() => dispatch(changeLocale("br"))}
+        >
           Change Locale to BR
         </button>
       </div>

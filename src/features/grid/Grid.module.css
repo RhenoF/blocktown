@@ -72,3 +72,8 @@
   opacity: 1;
   transition: 0s
 }
+
+.workerUnit {
+  height: 10vmax;
+  pointer-events: none;
+}

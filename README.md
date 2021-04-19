@@ -10,3 +10,7 @@ framework. First, customizability in regards to visual elements and locale, allo
 any existing exercises to be ported to appeal to other audiences easily. Second,
 modularity in regards to the ease of creating new exercises and integrating them
 into the existing rewards structure.
+
+## Sample Exercises
+
+### Exercise 1

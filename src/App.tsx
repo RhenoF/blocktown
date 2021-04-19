@@ -5,7 +5,6 @@ import { selectLocale } from "./features/locales/localeSlice";
 import Grid from "./features/grid/Grid";
 import en from "./translations/en.json";
 import br from "./translations/br.json";
-import logo from "./assets/units/worker.png";
 import "./App.css";
 
 const text = defineMessages({
@@ -23,10 +22,9 @@ const messages: any = {
 function App() {
   const lang = useSelector(selectLocale)
   return (
-    <IntlProvider locale={lang} messages={messages[lang]} >
+    <IntlProvider locale={lang} messages={messages[lang]}>
       <div className="App">
         <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
           <FormattedMessage {...text.title} />
         </header>
         <Grid />
