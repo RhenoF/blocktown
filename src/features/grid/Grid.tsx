@@ -14,7 +14,7 @@ import {
   selectGridSize,
 } from "./gridSlice";
 import styles from "./Grid.module.css";
-// import worker from "assets/units/worker.png";
+import worker from "../../assets/units/worker.png";
 
 const messages = defineMessages({
   welcome: {
@@ -28,35 +28,36 @@ export default function Grid() {
   const position = useSelector(selectPosition);
   const grid_size = useSelector(selectGridSize);
 
-  // const dot = (x: Number, y: Number) => {
-  //   return (
-  //     <div className={styles.workerUnit}>
-  //       {x === position.x && y === position.y && (
-  //         <img src={worker} className={styles.workerUnit} alt="worker"></img>
-  //       )}
-  //     </div>
-  //   );
-  // };
+  const dot = (x: Number, y: Number) => {
+    return (
+      <div className={styles.workerUnit}>
+        {(x === position.x && y === position.y && (
+          <img src={worker} className={styles.workerUnit} alt="worker"></img>
+        )) || <div className={styles.workerUnit}></div>}
+      </div>
+    );
+  };
 
-  // const renderRows = () => {
-  //   let x = 0;
-  //   let y = 0;
-  //   let grid = [];
+  const renderRows = () => {
+    let x = 0;
+    let y = 0;
+    let grid: any = [];
 
-  //   while (y < grid_size.y) {
-  //     let row = [];
-  //     while (x < grid_size.x) {
-  //       row.push(dot(x, y));
-  //       x += 1;
-  //     }
-  //     grid.push(row);
-  //     y = +1;
-  //   }
+    while (y < grid_size.y) {
+      x = 0;
+      let row = [];
+      while (x < grid_size.x) {
+        row.push(dot(x, y));
+        x += 1;
+      }
+      grid.push(<div className={styles.row}>{row}</div>);
+      y += 1;
+    }
 
-  //   return grid;
-  // };
+    return grid;
+  };
 
-  // const space = renderRows();
+  const space = renderRows();
 
   return (
     <div>
@@ -65,6 +66,7 @@ export default function Grid() {
           <FormattedMessage {...messages.welcome} /> test
         </span>
       </div>
+      {space}
       <div className={styles.row}>
         <span>
           Grid Size: x:{grid_size.x}, y:{grid_size.y}
@@ -79,13 +81,13 @@ export default function Grid() {
         <button className={styles.button} onClick={() => dispatch(moveUp())}>
           Move Up
         </button>
-        <button className={styles.button} onClick={() => dispatch(moveDown())}>
-          Move Down
-        </button>
       </div>
       <div className={styles.row}>
         <button className={styles.button} onClick={() => dispatch(moveLeft())}>
           Move Left
+        </button>
+        <button className={styles.button} onClick={() => dispatch(moveDown())}>
+          Move Down
         </button>
         <button className={styles.button} onClick={() => dispatch(moveRight())}>
           Move Right

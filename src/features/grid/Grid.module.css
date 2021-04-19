@@ -75,5 +75,6 @@
 
 .workerUnit {
   height: 10vmax;
+  width: 10vmin;
   pointer-events: none;
 }
