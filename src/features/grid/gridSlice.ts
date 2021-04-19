@@ -1,14 +1,20 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import _ from "lodash";
 import { AppThunk, RootState } from "../../app/store";
 
 interface GridState {
   grid_size: any;
   position: any;
+  blocks: any;
 }
 
 const initialState: GridState = {
-  grid_size: { x: 3, y: 3 },
-  position: { x: 1, y: 1 },
+  grid_size: { x: 5, y: 4 },
+  position: { x: 0, y: 0 },
+  blocks: [
+    { x: 2, y: 2 },
+    { x: 3, y: 2 },
+  ],
 };
 
 function sanityCheck(state: any) {
@@ -23,6 +29,9 @@ function sanityCheck(state: any) {
   }
   if (state.position.x >= state.grid_size.x) {
     state.position.x = 0;
+  }
+  if (state.blocks.some((e: any) => _.isEqual(e, state.position))) {
+    state.position = initialState.position;
   }
 }
 
@@ -86,5 +95,6 @@ export const {
 // in the slice file. For example: `useSelector((state: RootState) => state.grid.position)`
 export const selectPosition = (state: RootState) => state.grid.position;
 export const selectGridSize = (state: RootState) => state.grid.grid_size;
+export const selectBlocks = (state: RootState) => state.grid.blocks;
 
 export default gridSlice.reducer;

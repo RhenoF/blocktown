@@ -78,3 +78,10 @@
   width: 6vmax;
   pointer-events: none;
 }
+
+.block {
+  height: 6vmax;
+  width: 6vmax;
+  pointer-events: none;
+  background-color: black;
+}

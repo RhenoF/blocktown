@@ -8,14 +8,13 @@ import {
   moveDown,
   moveLeft,
   moveRight,
-  move,
-  change_size,
   selectPosition,
   selectGridSize,
+  selectBlocks,
 } from "./gridSlice";
 import styles from "./Grid.module.css";
 import worker from "../../assets/units/worker.png";
-
+import _, { isEqual } from "lodash";
 const messages = defineMessages({
   welcome: {
     id: "Welcome",
@@ -27,15 +26,29 @@ export default function Grid() {
   const dispatch = useDispatch();
   const position = useSelector(selectPosition);
   const grid_size = useSelector(selectGridSize);
+  const blocks = useSelector(selectBlocks);
 
-  const dot = (x: Number, y: Number) => {
-    return (
+  const dot = (obj: Object) => {
+    let dot = (
       <div className={styles.workerUnit}>
-        {(x === position.x && y === position.y && (
-          <img src={worker} className={styles.workerUnit} alt="worker"></img>
-        )) || <div className={styles.workerUnit}></div>}
+        <div className={styles.workerUnit}></div>
       </div>
     );
+    if (blocks.some((e: any) => _.isEqual(e, obj))) {
+      dot = (
+        <div className={styles.block}>
+          <div className={styles.workerUnit}></div>
+        </div>
+      );
+    } else if (_.isEqual(obj, position)) {
+      dot = (
+        <div className={styles.workerUnit}>
+          <img src={worker} className={styles.workerUnit} alt="worker"></img>
+        </div>
+      );
+    }
+
+    return dot;
   };
 
   const renderRows = () => {
@@ -47,7 +60,7 @@ export default function Grid() {
       x = 0;
       let row = [];
       while (x < grid_size.x) {
-        row.push(dot(x, y));
+        row.push(dot({ x: x, y: y }));
         x += 1;
       }
       grid.push(<div className={styles.row}>{row}</div>);
