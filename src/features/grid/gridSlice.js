@@ -1,14 +1,8 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 import _ from "lodash";
-import { AppThunk, RootState } from "../../app/store";
 
-interface GridState {
-  grid_size: any;
-  position: any;
-  blocks: any;
-}
-
-const initialState: GridState = {
+const initialState = {
+  code: "",
   grid_size: { x: 5, y: 4 },
   position: { x: 0, y: 0 },
   blocks: [
@@ -17,7 +11,7 @@ const initialState: GridState = {
   ],
 };
 
-function sanityCheck(state: any) {
+function sanityCheck(state) {
   if (state.position.y < 0) {
     state.position.y = state.grid_size.y - 1;
   }
@@ -30,7 +24,7 @@ function sanityCheck(state: any) {
   if (state.position.x >= state.grid_size.x) {
     state.position.x = 0;
   }
-  if (state.blocks.some((e: any) => _.isEqual(e, state.position))) {
+  if (state.blocks.some((e) => _.isEqual(e, state.position))) {
     state.position = initialState.position;
   }
 }
@@ -60,13 +54,16 @@ export const gridSlice = createSlice({
       sanityCheck(state);
     },
     // Use the PayloadAction type to declare the contents of `action.payload`
-    move: (state, action: PayloadAction<any>) => {
+    move: (state, action) => {
       state.position = action;
       sanityCheck(state);
     },
-    change_size: (state, action: PayloadAction<any>) => {
+    changeSize: (state, action) => {
       state.grid_size = action;
       sanityCheck(state);
+    },
+    setCode: (state, action) => {
+      state.code = action.payload;
     },
   },
 });
@@ -77,7 +74,8 @@ export const {
   moveLeft,
   moveRight,
   move,
-  change_size,
+  changeSize,
+  setCode,
 } = gridSlice.actions;
 
 // The function below is called a thunk and allows us to perform async logic. It
@@ -93,8 +91,9 @@ export const {
 // The function below is called a selector and allows us to select a position from
 // the state. Selectors can also be defined inline where they're used instead of
 // in the slice file. For example: `useSelector((state: RootState) => state.grid.position)`
-export const selectPosition = (state: RootState) => state.grid.position;
-export const selectGridSize = (state: RootState) => state.grid.grid_size;
-export const selectBlocks = (state: RootState) => state.grid.blocks;
+export const selectCode = (state) => state.grid.code;
+export const selectPosition = (state) => state.grid.position;
+export const selectGridSize = (state) => state.grid.grid_size;
+export const selectBlocks = (state) => state.grid.blocks;
 
 export default gridSlice.reducer;
