@@ -7,6 +7,7 @@
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
+    "gh-pages": "^3.2.0",
     "react": "^17.0.2",
     "react-blockly": "^7.0.0-alpha.1",
     "react-dom": "^17.0.2",
@@ -14,11 +15,14 @@
     "react-scripts": "4.0.3"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
+  "homepage": "https://rhenof.github.io/blocktown",
   "eslintConfig": {
     "extends": "react-app"
   },
