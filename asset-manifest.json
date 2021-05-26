@@ -1,0 +1,21 @@
+{
+  "files": {
+    "main.css": "/blocktown/static/css/main.c9778606.chunk.css",
+    "main.js": "/blocktown/static/js/main.4931b779.chunk.js",
+    "main.js.map": "/blocktown/static/js/main.4931b779.chunk.js.map",
+    "runtime-main.js": "/blocktown/static/js/runtime-main.64139fd0.js",
+    "runtime-main.js.map": "/blocktown/static/js/runtime-main.64139fd0.js.map",
+    "static/js/2.528be236.chunk.js": "/blocktown/static/js/2.528be236.chunk.js",
+    "static/js/2.528be236.chunk.js.map": "/blocktown/static/js/2.528be236.chunk.js.map",
+    "index.html": "/blocktown/index.html",
+    "static/css/main.c9778606.chunk.css.map": "/blocktown/static/css/main.c9778606.chunk.css.map",
+    "static/js/2.528be236.chunk.js.LICENSE.txt": "/blocktown/static/js/2.528be236.chunk.js.LICENSE.txt",
+    "static/media/worker.e18205b6.png": "/blocktown/static/media/worker.e18205b6.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.64139fd0.js",
+    "static/js/2.528be236.chunk.js",
+    "static/css/main.c9778606.chunk.css",
+    "static/js/main.4931b779.chunk.js"
+  ]
+}
