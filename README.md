@@ -1,5 +1,7 @@
 # Blocktown
 
+Test Stable Build Available At: https://rhenof.github.io/blocktown/index.html
+
 Blocktown is meant to be a framework on which to build exercises aimed at
 teaching and training users in a range of mathematical and algorithmic skills.
 
