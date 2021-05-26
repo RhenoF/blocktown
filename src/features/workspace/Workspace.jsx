@@ -86,6 +86,7 @@ function Workspace(props) {
         css: true,
         scrollbars: false,
         grid: { spacing: 20, length: 3, colour: "#ccc", snap: true },
+        renderer: "zelos", // geras, thrasos or zelos
       }}
       onInject={useDefaults}
       toolboxConfiguration={custom_toolbox} // this must be a JSON toolbox definition
